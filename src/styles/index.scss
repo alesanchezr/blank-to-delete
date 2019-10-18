@@ -1,0 +1,19 @@
+@import "~bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css?family=Dosis:200&display=swap');
+
+body{
+    font-family: 'Dosis', sans-serif;
+}
+.todos .form-control{
+    border: 0 !important;
+}
+
+.bullet{
+    position: relative;
+    .bullet-actions{
+        display: inline-block;
+        position: absolute;
+        top: 0px;
+        right: -30px;
+    }
+}

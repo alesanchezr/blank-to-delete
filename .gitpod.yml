@@ -1,0 +1,5 @@
+tasks:
+- command: npm i breathecode-cli -g; export APACHE_DOCROOT_IN_REPO=api;
+ports:
+  - port: 8080
+    onOpen: open-browser
