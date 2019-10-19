@@ -3,6 +3,8 @@
 
 body{
     font-family: 'Dosis', sans-serif;
+    h2{ font-size: 20px; }
+    h3{ font-size: 16px; }
 }
 .todos .form-control{
     border: 0 !important;
@@ -15,5 +17,24 @@ body{
         position: absolute;
         top: 0px;
         right: -30px;
+    }
+}
+.navbar-dark h2{
+    color: white;
+}
+.bcnotifier{
+    padding: 0;
+    margin: 0;
+    li{ list-style: none; margin: 0; }
+}
+
+.settings{
+    color: white;
+    padding: 10px;
+    .btn{ padding: 0px;}
+    .fa-angle-double-up{ font-size: 14px; color: white; }
+    &.collapsed{
+        padding: 0;
+        .fa-angle-double-up{ font-size: 8px; transform: scaleY(-1); }
     }
 }
