@@ -99,25 +99,27 @@ $api->post('/members/{company}', function (Request $request, Response $response,
 
 });
 
-$api->get('/minutes/{company}', function (Request $request, Response $response, array $args) use ($api) {
+$api->get('/minutes/company/{company}', function (Request $request, Response $response, array $args) use ($api) {
     $db = new \JsonPDO\JsonPDO('./data/'.$args["company"].'/','[]',false);
     $minutes = $db->getJsonByName('minutes');
 	return $response->withJson($minutes);
 });
 
-$api->post('/minutes/{company}', function (Request $request, Response $response, array $args) use ($api) {
+$api->post('/minutes/company/{company}', function (Request $request, Response $response, array $args) use ($api) {
 
     $body = $request->getParsedBody();
     $id = $api->validate($body,'id')->int();
     $date = $api->validate($body,'date')->string();
     $author = $api->validate($body,'author')->string();
     $tittle = $api->validate($body,'tittle')->string();
+    $status = $api->validate($body,'status')->enum(['closed', 'open']);
     $attendees = $api->validate($body,'attendees')->string();
 
     $new = [
         "id" => $id,
         "date" => $date,
         "author" => $author,
+        "status" => $status,
         "attendees" => $attendees,
         "tittle" => isset($tittle) ? $tittle : $date,
         "bullets" => (array) $body["bullets"]

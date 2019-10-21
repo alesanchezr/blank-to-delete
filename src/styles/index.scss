@@ -9,6 +9,7 @@ body{
 .todos .form-control{
     border: 0 !important;
 }
+ul li{ list-style: none; margin: 0; }
 
 .bullet{
     position: relative;
@@ -29,12 +30,36 @@ body{
 }
 
 .settings{
+    position: relative;
     color: white;
     padding: 10px;
-    .btn{ padding: 0px;}
+    .btn.collapse-btn{
+        position: absolute;
+        padding: 0px 15px;
+        bottom: -22px;
+        background: #343a40;
+    }
     .fa-angle-double-up{ font-size: 14px; color: white; }
     &.collapsed{
         padding: 0;
         .fa-angle-double-up{ font-size: 8px; transform: scaleY(-1); }
+        .btn.collapse-btn{ bottom: 5px; }
+    }
+    .input-group-prepend{
+        color: #343a40;
+    }
+    .input-company{
+        border: 1px solid grey;
+        &:hover{ background: grey; cursor: pointer; }
+    }
+}
+
+.input-group-prepend{
+    .input-group-text {
+        border-radius: 20px 0px 0px 20px;
+    }
+    .form-control{
+        border-radius: 0px 5px 5px 0px;
+        background-color: #FFFFFF;
     }
 }
