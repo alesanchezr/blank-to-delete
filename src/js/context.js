@@ -3,7 +3,8 @@ import { Notify } from "bc-react-notifier";
 import queryString from "query-string";
 import moment from "moment";
 
-const HOST = "https://8001-c64318f7-01bc-4ea3-9003-dd2c84cea540.ws-us1.gitpod.io";
+//const HOST = "https://8001-c64318f7-01bc-4ea3-9003-dd2c84cea540.ws-us1.gitpod.io";
+const HOST = "";
 
 const decode = {
 	minutes: incoming => {
