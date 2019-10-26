@@ -56,10 +56,6 @@ vendor/
 data/
 !data/.gitkeep
 
-# ignore the dist directory were our bundle files are going to be
-public/*
-!public/index.html
-
 dist/*
 !dist/index.html
 

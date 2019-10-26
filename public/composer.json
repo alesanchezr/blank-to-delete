@@ -1,0 +1,14 @@
+{
+    "name": "alesanchezr/meetings",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Alejandro Sanchez",
+            "email": "aalejo@gmail.com"
+        }
+    ],
+    "require": {
+        "alesanchezr/slim-api-wrapper": "^0.0.4",
+        "alesanchezr/json-orm": "^0.0.3"
+    }
+}
