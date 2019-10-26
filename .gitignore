@@ -8,6 +8,7 @@
 php_errorlog
 .log
 errorlog
+error_log
 
 # track this file .gitignore (i.e. do NOT ignore it)
 !composer.json
