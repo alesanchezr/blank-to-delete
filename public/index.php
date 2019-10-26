@@ -7,8 +7,10 @@ require("./vendor/autoload.php");
 $api = new \SlimAPI\SlimAPI([
     'name' => 'My Super Duper API',
     'allowedURLs' => 'all',
-	'debug' => true
+	'debug' => false
 ]);
+
+if(!file_exists('./data/')) mkdir('./data/');
 
 $api->get('/companies', function (Request $request, Response $response, array $args) use ($api) {
     $db = new \JsonPDO\JsonPDO('./data','[]',false);
