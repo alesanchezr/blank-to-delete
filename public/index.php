@@ -32,6 +32,20 @@ $api->post('/companies', function (Request $request, Response $response, array $
         $companies[] = $value;
         $file = $db->toFile('companies');
         $file->save($companies);
+
+
+        function initializeFile($path){
+            if(!file_exists($path)){
+                $myfile = fopen($path, 'w+');
+                fwrite($myfile, "[]");
+                fclose($myfile);
+            }
+        }
+
+        initializeFile('./data/'.$value.'/projects.json');
+        initializeFile('./data/'.$value.'/members.json');
+        initializeFile('./data/'.$value.'/minutes.json');
+
 	    return $response->withJson($companies);
     }
     catch(Exception $e){
