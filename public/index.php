@@ -27,25 +27,25 @@ $api->post('/companies', function (Request $request, Response $response, array $
 
     $db = new \JsonPDO\JsonPDO('./data','[]',false);
 
+    function initializeFile($path){
+        if(!file_exists($path)){
+            $myfile = fopen($path, 'w+');
+            fwrite($myfile, "[]");
+            fclose($myfile);
+        }
+    }
+
+    $current = dirname(__FILE__);
+    if(!file_exists($current.'/data/'.$value)) mkdir($current.'/data/'.$value);
+    initializeFile($current."/data/".$value.'/projects.json');
+    initializeFile($current."/data/".$value.'/members.json');
+    initializeFile($current."/data/".$value.'/minutes.json');
+
     try{
         $companies = $db->getJsonByName('companies');
         $companies[] = $value;
         $file = $db->toFile('companies');
         $file->save($companies);
-
-
-        function initializeFile($path){
-            if(!file_exists($path)){
-                $myfile = fopen($path, 'w+');
-                fwrite($myfile, "[]");
-                fclose($myfile);
-            }
-        }
-
-        initializeFile('./data/'.$value.'/projects.json');
-        initializeFile('./data/'.$value.'/members.json');
-        initializeFile('./data/'.$value.'/minutes.json');
-
 	    return $response->withJson($companies);
     }
     catch(Exception $e){
@@ -53,6 +53,7 @@ $api->post('/companies', function (Request $request, Response $response, array $
         $file->save([$value]);
         return $response->withJson([$value]);
     }
+
 
 });
 
