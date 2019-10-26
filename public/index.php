@@ -53,8 +53,8 @@ $api->post('/projects/{company}', function (Request $request, Response $response
     $body = $request->getParsedBody();
     $value = $api->validate($body,'value')->slug();
 
-    $db = new \JsonPDO\JsonPDO('./data/'.$args["company"].'/','[]',false);
     if(!file_exists('./data/'.$args["company"])) mkdir('./data/'.$args["company"]);
+    $db = new \JsonPDO\JsonPDO('./data/'.$args["company"].'/','[]',false);
 
     try{
         $projects = $db->getJsonByName('projects');
