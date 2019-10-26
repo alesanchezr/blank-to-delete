@@ -4,6 +4,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 require("./vendor/autoload.php");
 
+error_reporting(0);
+
 $api = new \SlimAPI\SlimAPI([
     'name' => 'My Super Duper API',
     'allowedURLs' => 'all',
