@@ -7,7 +7,7 @@ import moment from "moment";
 const Minute = () => {
 	const { store, actions } = useContext(AppContext);
 
-	const _onChange = values => actions.updateMinute({ ...store.minute, ...values });
+	const _onChange = values => actions.updateMinute({ ...actions.newMinute(store.minute), ...values });
 	const { bullets, status, ...rest } = actions.newMinute(store.minute);
 	const readOnly = status === "closed";
 
