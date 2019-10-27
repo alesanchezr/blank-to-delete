@@ -185,7 +185,7 @@ export const inject = PassedComponent => props => {
 			const { company } = actions.getSettings();
 			const parsed = queryString.parse(location.hash);
 			if (company || parsed.company) actions.loadDataFromCompany(company || parsed.company);
-			else Notify.error("Missing company intormation");
+			//else Notify.error("Missing company intormation");
 		});
 	}, []);
 	return (
