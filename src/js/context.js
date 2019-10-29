@@ -129,6 +129,7 @@ export const getActions = ({ store, setStore }) => ({
 	},
 	updateMinute: minute => {
 		setStore({ minute });
+		return minute;
 	},
 	loadDataFromCompany: function(company) {
 		Promise.all([this.get("members/" + company), this.get("projects/" + company)]).then(() => {

@@ -5,7 +5,7 @@ import { Notify } from "bc-react-notifier";
 import { AppContext } from "../context";
 import { AddCompanyModal } from "./modals";
 
-const Settings = ({ onLoadMinute, collapsed }) => {
+const Settings = ({ onLoad, collapsed }) => {
 	const { store, actions } = useContext(AppContext);
 	const [_collapsed, setCollapsed] = useState(collapsed);
 	const [pageLimit, setPageLimit] = useState(5);
@@ -41,7 +41,11 @@ const Settings = ({ onLoadMinute, collapsed }) => {
 												},
 												9999999999999
 											);
-										} else _onChange({ company: opt.value });
+										} else {
+											_onChange({ company: opt.value });
+											actions.loadDataFromCompany(opt.value);
+											onLoad("companies", opt.value);
+										}
 									}}
 								/>
 								`
@@ -53,6 +57,7 @@ const Settings = ({ onLoadMinute, collapsed }) => {
 							</button>
 							<h3>Recent Meetings</h3>
 							<ul className="pl-0">
+								{(!store.minutes || store.minutes.length === 0) && <p>No previous meetings</p>}
 								{store.minutes
 									.sort((a, b) => (b.date.isAfter(a.date) ? 1 : -1))
 									.slice(0, pageLimit)
@@ -68,7 +73,7 @@ const Settings = ({ onLoadMinute, collapsed }) => {
 											<button
 												type="button"
 												className="btn text-white"
-												onClick={() => onLoadMinute(m.id)}>
+												onClick={() => onLoad("minutes", m.id)}>
 												<i className="fas fa-eye" />
 											</button>
 										</li>
@@ -86,7 +91,7 @@ const Settings = ({ onLoadMinute, collapsed }) => {
 	);
 };
 Settings.propTypes = {
-	onLoadMinute: PropTypes.func,
+	onLoad: PropTypes.func,
 	collapsed: PropTypes.bool
 };
 export default Settings;

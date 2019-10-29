@@ -13,9 +13,13 @@ export function Home() {
 	return (
 		<div>
 			<Settings
-				onLoadMinute={id => {
-					window.location.hash = "";
-					actions.updateMinute(store.minutes.find(m => m.id === id));
+				onLoad={(type, id) => {
+					if (type === "minutes") {
+						window.location.hash = "";
+						actions.updateMinute(store.minutes.find(m => m.id === id));
+					} else if (type == "companies") {
+						actions.updateMinute(actions.newMinute());
+					}
 				}}
 			/>
 			<Notifier />

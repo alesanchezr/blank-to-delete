@@ -47,3 +47,4 @@ $ npm run deploy
 - Hot Deploy: Use of [Webpack Development Server](https://webpack.js.org/configuration/dev-server/) for hot deploy and live reload.
 - One-command publish of the code to github pages with `npm run deploy`.
 - Babel 7 (really fast).
+
