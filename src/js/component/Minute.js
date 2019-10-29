@@ -138,7 +138,7 @@ const Minute = () => {
 					className="btn btn-secondary ml-2"
 					onClick={() => {
 						window.location.hash = "";
-						_onChange(actions.updateMinute(actions.newMinute()));
+						_onChange(actions.updateMinute(actions.cacheMinute(actions.newMinute())));
 					}}>
 					Start New Meeting
 				</button>

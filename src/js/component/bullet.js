@@ -119,18 +119,20 @@ const Bullet = ({ onChange, onDelete, readOnly, ...rest }) => {
 					/>
 				)}
 			</div>
-			<div className="col-2">
-				{!markable && (
-					<DatePicker
-						readOnly={readOnly}
-						className="form-control"
-						placeholder="due date"
-						type="date"
-						selected={rest.due_at.toDate()}
-						onChange={value => _onChange({ due_at: moment(value) })}
-					/>
-				)}
-			</div>
+			{rest.type === "todo" && (
+				<div className="col-2">
+					{!markable && (
+						<DatePicker
+							readOnly={readOnly}
+							className="form-control"
+							placeholder="due date"
+							type="date"
+							selected={rest.due_at.toDate()}
+							onChange={value => _onChange({ due_at: moment(value) })}
+						/>
+					)}
+				</div>
+			)}
 			{store.minute.status == "open" ? (
 				<p className="bullet-actions">
 					<button type="button" className="btn" onClick={() => onDelete && onDelete()}>
